@@ -44,7 +44,8 @@ namespace TwitterReporter
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("config.json", optional: false);
+                .AddJsonFile("config.json", optional: false)
+                .AddUserSecrets<Program>();
 
             IConfiguration config = builder.Build();
             return config;

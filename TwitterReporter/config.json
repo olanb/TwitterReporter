@@ -1,9 +1,5 @@
 {
-  "TwitterCredentials": {
-    "ConsumerKey": "",
-    "ConsumerSecret": "",
-    "BearerToken": ""
-  },
+ 
   "Logging": {
     "LogLevel": {
       "Default": "Debug",

@@ -16,13 +16,17 @@ namespace TwitterReporter.Tests.Acceptance
         public void GetTwitterCredentials()
         {
             // Given
-            var serviceProvider = Initializer.GetServiceProvider(Initializer.BuildConfig());
+            var config = Initializer.BuildConfig();
+            var serviceProvider = Initializer.GetServiceProvider(config);
+            var expectedConsumerKey = config.GetSection("TwitterCredentials:ConsumerKey").Value;
+            var expectedConsumerSecret = config.GetSection("TwitterCredentials:ConsumerSecret").Value;
+            var expectedBearerToken = config.GetSection("TwitterCredentials:BearerToken").Value;
             // When
             var client = serviceProvider.GetService<ITwitterClient>();
             // Then
-            Assert.Equal("hLmvUqhyIi1BpOlfGxBhzGqbJ", client.Credentials.ConsumerKey);
-            Assert.Equal("YNqkDNcP8nbjeyZAR6vJF9M3fBi8Biu50ViG63DMVNeF4dS2AR", client.Credentials.ConsumerSecret);
-            Assert.Equal("AAAAAAAAAAAAAAAAAAAAAE2sUQEAAAAAk271BUJBMgXW9OzRGuZaEZFEYNA%3D1BvKjdIt3UyaTyyQVEOEIqTATbgJDDJyT0Zz21imQ7kV3AMKvY", client.Credentials.BearerToken);
+            Assert.Equal(expectedConsumerKey, client.Credentials.ConsumerKey);
+            Assert.Equal(expectedConsumerSecret, client.Credentials.ConsumerSecret);
+            Assert.Equal(expectedBearerToken, client.Credentials.BearerToken);
         }
     }
 
