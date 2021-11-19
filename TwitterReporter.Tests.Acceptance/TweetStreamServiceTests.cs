@@ -27,7 +27,6 @@ namespace TwitterReporter.Tests.Acceptance
             //Then
             Assert.Equal(expectedTweetsPerMinute, result.Item1);
             Assert.Equal(expectedTweetCount, result.Item2);
-
         }
     }
 }
