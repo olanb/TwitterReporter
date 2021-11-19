@@ -16,18 +16,18 @@ namespace TwitterReporter.Tests.Acceptance
             // Given
             var testDictionary = new ConcurrentDictionary<string, DateTime>();
             var dateTime = DateTime.Today;
-             testDictionary.TryAdd("one", new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0));
+            testDictionary.TryAdd("one", new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0));
             testDictionary.TryAdd("two", new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 30));
             testDictionary.TryAdd("three", new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 1, 0));
 
             //When
             var service = new TweetStreamService(null, testDictionary);
             var result = service.CalculateTweetsPerMinute();
-      
+
             //Then
             Assert.Equal(expectedTweetsPerMinute, result.Item1);
             Assert.Equal(expectedTweetCount, result.Item2);
-            
+
         }
     }
 }
